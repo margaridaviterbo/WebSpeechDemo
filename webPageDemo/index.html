@@ -57,15 +57,19 @@
           <div id="div_start">
               <button id="start_button" onclick="startButton(event)"><img alt="Start" id="start_img"
               src="//google.com/intl/en/chrome/assets/common/images/content/mic.gif"></button>
-            </div>
-        <span class="final" id="final_span"></span> <span class="interim" id=
-        "interim_span"></span>
+          </div>
+          <span class="final" id="final_span"></span> 
+          <span class="interim" id="interim_span"></span>
       </div>
       <div class="compact marquee" id="div_language">
-        <select id="select_language" onchange="updateCountry()">
-          </select>&nbsp;&nbsp; <select id="select_dialect">
-          </select>
+        <select id="select_language" onchange="updateCountry()"></select>&nbsp;&nbsp; 
+        <select id="select_dialect"></select>
       </div>
+      <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+        <input name="sitesearch" type="hidden">
+        <input id="search_bar" autocomplete="on" class="form-control search" name="q" placeholder="Search in google" required="required"  type="text">
+        <button class="button" type="submit">Search</button>
+      </form>
     </div>
   </div>
 

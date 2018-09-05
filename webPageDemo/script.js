@@ -155,9 +155,11 @@ if (!('webkitSpeechRecognition' in window)) {
         interim_transcript += event.results[i][0].transcript;
       }
     }
+    console.log(final_transcript);
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
+    document.getElementById('search_bar').value= final_transcript;
   };
 }
 
@@ -188,6 +190,7 @@ function startButton(event) {
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
+  document.getElementById('search_bar').value='' ;
   start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic-slash.gif';
   showInfo('info_allow');
   start_timestamp = event.timeStamp;
