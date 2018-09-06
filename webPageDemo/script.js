@@ -148,6 +148,8 @@ if (!('webkitSpeechRecognition' in window)) {
       upgrade();
       return;
     }
+    //each item of the array of results will have the text in transcript and the confidence in that result
+    console.log(event.results);
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
@@ -155,7 +157,6 @@ if (!('webkitSpeechRecognition' in window)) {
         interim_transcript += event.results[i][0].transcript;
       }
     }
-    console.log(final_transcript);
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
