@@ -1,4 +1,4 @@
-//////////// Languages
+// Languages and dialects
 var langs =
 [['Afrikaans',       ['af-ZA']],
  ['Bahasa Indonesia',['id-ID']],
@@ -71,6 +71,7 @@ updateCountry();
 select_dialect.selectedIndex = 6;
 showInfo('info_start');
 
+// Set up language and dialect chosen
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
     select_dialect.remove(i);
@@ -86,20 +87,24 @@ var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
 var start_timestamp;
+
+// check if browser supports webkitSpeechRecognition
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
   start_button.style.display = 'inline-block';
-  var recognition = new webkitSpeechRecognition();
-  recognition.continuous = true;
-  recognition.interimResults = true;
+  var recognition = new webkitSpeechRecognition();  //create a speech recognition object
+  recognition.continuous = true;  // property controling whether continuous results are returned for each recognition, or only a single result
+  recognition.interimResults = true;  // property that controls whether interim(not final) results should be returned
 
+  // starts the speech recognition service listening to incoming audio
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
     start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
   };
 
+  // event is fired when error happens
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
       start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic.gif';
@@ -121,6 +126,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
   };
 
+  // event is fired when the speech recognition object is no longer listening to user input
   recognition.onend = function() {
     recognizing = false;
     if (ignore_onend) {
@@ -140,6 +146,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
   };
 
+  // event is fired when the speech recognition object finishes analyzing the voice input
   recognition.onresult = function(event) {
     var interim_transcript = '';
     if (typeof(event.results) == 'undefined') {
@@ -148,8 +155,8 @@ if (!('webkitSpeechRecognition' in window)) {
       upgrade();
       return;
     }
-    //each item of the array of results will have the text in transcript and the confidence in that result
-    console.log(event.results);
+
+    // adding all results returned to a transcript to print on screen
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
@@ -164,6 +171,7 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 }
 
+// function called when browser does not support Web Speech
 function upgrade() {
   start_button.style.visibility = 'hidden';
   showInfo('info_upgrade');
@@ -180,14 +188,15 @@ function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
 
+// method to handle click events on the start button
 function startButton(event) {
   if (recognizing) {
-    recognition.stop();
+    recognition.stop(); // stop listening
     return;
   }
   final_transcript = '';
   recognition.lang = select_dialect.value;
-  recognition.start();
+  recognition.start();  // start listening
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
@@ -197,6 +206,7 @@ function startButton(event) {
   start_timestamp = event.timeStamp;
 }
 
+// auxiliar funtion to display info on the page
 function showInfo(s) {
   if (s) {
     for (var child = info.firstChild; child; child = child.nextSibling) {
