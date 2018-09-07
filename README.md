@@ -21,6 +21,7 @@ Webpage that allows the user to choose a language and regognizes what the user s
  - click the micro button to start/stop listening
  - click the "Search" button to search wait you said on Google
 
+[demo video](https://raw.githubusercontent.com/margaridaviterbo/WebSpeechDemo/master/SpeechToText.mp4)
 
 ## Speech Color Changer Demo
 
