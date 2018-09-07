@@ -1,7 +1,7 @@
 # Speech Recognition in the Browser Demo
 
 This repo has two diferent demos (webpages) of how to implement speech recognition in the browser using [Web Speech API](http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html).
-This API uses the webkitspeech attribute of Chrome to handle the speech recognition and synthesis. Thus these demos only work on Chrome.
+This API uses the webkitspeech attribute of Chrome to handle the speech recognition and synthesis. Thus these demos only work on Chrome and access to internet is required.
 
 
 ### Instalation
