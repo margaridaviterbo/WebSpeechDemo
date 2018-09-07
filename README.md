@@ -21,6 +21,7 @@ Webpage that allows the user to choose a language and regognizes what the user s
  - click the micro button to start/stop listening
  - click the "Search" button to search wait you said on Google
 
+[demo video]Download SpeechToText.mp4
 
 ## Speech Color Changer Demo
 
@@ -31,3 +32,5 @@ Webpage that recognizes english speech, writing it on the page. It also recogniz
  - everytime you pause the browser will recognize you finished a sentence. The sentences will appear in order in the page.
  - if you say "start" you'll trigger the functionality of recognizing colors. Everytime you say a color the backgroud will change to that color.
  - if you say "stop" that same functionality will be turned off. You can say colors and the backgroud won't change.
+ 
+ [demo video]Download ColorChanger.mp4
